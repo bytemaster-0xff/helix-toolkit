@@ -19,6 +19,14 @@ namespace HelixToolkit.Wpf
     /// </summary>
     public class GridLinesVisual3D : MeshElement3D
     {
+        private Origins _origins = Origins.Center;
+
+        public enum Origins
+        {
+            Center,
+            BottomLeft,
+        }
+
         /// <summary>
         /// Identifies the <see cref="Center"/> dependency property.
         /// </summary>
@@ -107,6 +115,15 @@ namespace HelixToolkit.Wpf
             {
                 this.SetValue(CenterProperty, value);
             }
+        }
+
+        /// <summary>
+        /// Sets the origin from which the grid is displayed
+        /// </summary>
+        public Origins Origin
+        {
+            get { return _origins; }
+            set { _origins = value; }
         }
 
         /// <summary>
@@ -254,10 +271,10 @@ namespace HelixToolkit.Wpf
             // #136 
 
             var mesh = new MeshBuilder(true, false);
-            double minX = -this.Width / 2;
-            double minY = -this.Length / 2;
-            double maxX = this.Width / 2;
-            double maxY = this.Length / 2;
+            double minX = Origin == Origins.Center ? -this.Width / 2 : 0;
+            double minY = Origin == Origins.Center ? -this.Length / 2 : 0;
+            double maxX = Origin == Origins.Center ? this.Width / 2 : this.Width;
+            double maxY = Origin == Origins.Center ? this.Length / 2 : this.Length;
 
             double x = minX;
             double eps = this.MinorDistance / 10;

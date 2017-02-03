@@ -32,7 +32,7 @@
         <helix:HelixViewport3D Grid.Row="1">
             <helix:DefaultLights/>
 
-            <helix:GridLinesVisual3D Center="6 0 -0.5" Fill="Gray" Visible="{Binding IsChecked, ElementName=GridLinesVisible}"/>
+            <helix:GridLinesVisual3D  Center="6 0 -0.5" Fill="Gray" Visible="{Binding IsChecked, ElementName=GridLinesVisible}"/>
 
             <helix:ArrowVisual3D Point1="5 0 -0.45" Point2="5 0 0.45" Diameter="0.2" Fill="Red" Visible="{Binding IsChecked, ElementName=ArrowVisible}"/>
             <helix:BoxVisual3D Center="4 0 0" Fill="Orange" Length="0.8" Width="0.6" Height="0.9" Visible="{Binding IsChecked, ElementName=BoxVisible}"/>
